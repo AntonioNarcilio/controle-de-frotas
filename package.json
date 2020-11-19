@@ -1,0 +1,21 @@
+{
+  "name": "API",
+  "version": "1.0.0",
+  "description": "Api a ser utilizada com o banco controle de frotas",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server",
+    "dev": "nodemon src/server"
+  },
+  "keywords": [],
+  "author": "Antonio Narcilio",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "knex": "^0.21.12",
+    "pg": "^8.5.1"
+  }
+}
