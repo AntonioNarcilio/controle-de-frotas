@@ -5,7 +5,27 @@ module.exports = {
 	async index	(req, res, next) {
 		try {
 			// ------------- nome da tabela 👇
-			const results = await	knex('veiculo')
+			const results = await	knex({v:'veiculo'})
+			.select(
+				'v.id',
+				'v.marca',
+				'v.modelo',
+				'v.ano_fabricacao',
+				't.categoria',
+				't.portas',
+				't.tipo_farol',
+				't.cambio',
+				't.ocupantes',
+				'v.num_chassi',
+				'v.num_placa',
+				'v.tipo_combustivel',
+				'v.tanque_tamanho',
+				'v.tanque_atual',
+				'v.quilometragem'
+			)
+			.join({t: 'tipo_veiculo'}, 'v.id', '=', 't.veiculo_id')
+		
+
 			return res.json(results)
 
 		}catch (error) {
@@ -18,8 +38,26 @@ module.exports = {
 		try {
 			const { id } = req.params
 
-			const results = await	knex('veiculo')
-			.where({ id })
+			const results = await	knex({v:'veiculo'})
+			.select(
+				'v.id',
+				'v.marca',
+				'v.modelo',
+				'v.ano_fabricacao',
+				't.categoria',
+				't.portas',
+				't.tipo_farol',
+				't.cambio',
+				't.ocupantes',
+				'v.num_chassi',
+				'v.num_placa',
+				'v.tipo_combustivel',
+				'v.tanque_tamanho',
+				'v.tanque_atual',
+				'v.quilometragem'
+			)
+			.join({t: 'tipo_veiculo'}, 'v.id', '=', 't.veiculo_id')
+			.where('v.id', '=', id)
 
 			return res.json(results)
 
@@ -40,11 +78,19 @@ module.exports = {
 				tipo_combustivel,
 				tanque_tamanho,
 				tanque_atual,
-				quilometragem
+				quilometragem,
+				categoria,
+				portas,
+				tipo_farol,
+				cambio,
+				ocupantes,
 			} = req.body
 
+			console.log(req.body)
 
-			await knex('veiculo').insert({
+			await knex('veiculo')
+			.returning('id')
+			.insert({
 				marca,
 				modelo,
 				ano_fabricacao,
@@ -55,6 +101,19 @@ module.exports = {
 				tanque_atual,
 				quilometragem
 			})
+			.then(rows => 
+				knex('tipo_veiculo')
+				.insert({ 	
+					categoria,
+					portas,
+					tipo_farol,
+					cambio,
+					ocupantes, 
+					veiculo_id: rows[0] 
+				})
+			)
+
+
 
 			return res.status(201).send()
 
@@ -76,7 +135,12 @@ module.exports = {
 				tipo_combustivel,
 				tanque_tamanho,
 				tanque_atual,
-				quilometragem
+				quilometragem,
+				categoria,
+				portas,
+				tipo_farol,
+				cambio,
+				ocupantes,
 			} = req.body
 
 			const { id } = req.params
@@ -94,6 +158,18 @@ module.exports = {
 				quilometragem
 			})
 			.where({ id })
+			.then(rows => 
+				knex('tipo_veiculo')
+				.update({ 	
+					categoria,
+					portas,
+					tipo_farol,
+					cambio,
+					ocupantes, 
+					veiculo_id: rows[0] 
+				})
+			)
+			
 
 			return res.send()
 
@@ -109,7 +185,10 @@ module.exports = {
 			
 			await knex('veiculo')
 			.where({ id })
+			await knex('tipo_veiculo')
+			.where('veiculo_id', '=', id )
 			.del()
+			
 
 			return res.send()
 

@@ -5,7 +5,6 @@ const FuncionarioController = require('./controllers/FuncionarioController')
 const DepartamentoController = require('./controllers/DepartamentoController')
 const VeiculoController = require('./controllers/VeiculoController')
 
-
 routes
 	// FUNCIONÁRIO
 	.get('/funcionario', FuncionarioController.index)

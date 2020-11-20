@@ -5,7 +5,19 @@ module.exports = {
 	async index	(req, res, next) {
 		try {
 			// ------------- nome da tabela 👇
-			const results = await	knex('funcionario')
+			const results = await	knex({f:'funcionario'})
+			.select(
+				'f.nome', 
+				'f.sobrenome', 
+				'f.cpf',
+				'f.data_nasc',
+				'f.sexo',
+				'f.endereco',
+				'f.departamento_id',
+				'd.dnome', 
+				)
+			.join({d: 'departamento'}, 'f.departamento_id', '=', 'd.id')
+			.orderBy('f.id', 'asc')
 
 			const [ count ] = await knex('funcionario').count()
 			console.log(`\nExiste ${count.count} funcionários cadastrados\n`)
@@ -30,12 +42,13 @@ module.exports = {
 				'f.sobrenome', 
 				'f.cpf',
 				'f.data_nasc',
-				'sexo',
-				'endereco',
+				'f.sexo',
+				'f.endereco',
 				'd.dnome', 
 				)
 			.join({d: 'departamento'}, 'f.departamento_id', '=', 'd.id')
 			.where('f.id', '=', id)
+			
 			return res.json(results)
 
 		} catch (error) {
