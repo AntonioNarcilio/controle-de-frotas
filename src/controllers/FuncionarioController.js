@@ -2,11 +2,21 @@ const knex = require('../database')
 
 module.exports = {
 	// Listar funcionários existentes
-	async index	(req, res) {
-		// ------------- nome da tabela 👇
-		const results = await	knex('funcionario')
+	async index	(req, res, next) {
+		try {
+			// ------------- nome da tabela 👇
+			const results = await	knex('funcionario')
 
-		return res.json(results)
+			const [ count ] = await knex('funcionario').count()
+			console.log(`\nExiste ${count.count} funcionários cadastrados\n`)
+
+			return res.json(results)
+
+
+		} catch (error) {
+			next(error)
+		}
+
 	},
 
 	// Retornando um funcionário especifico
@@ -14,9 +24,18 @@ module.exports = {
 		try {
 			const { id } = req.params
 
-			const results = await	knex('funcionario')
-			.where({ id })
-
+			const results = await	knex({f:'funcionario'})
+			.select(
+				'f.nome', 
+				'f.sobrenome', 
+				'f.cpf',
+				'f.data_nasc',
+				'sexo',
+				'endereco',
+				'd.dnome', 
+				)
+			.join({d: 'departamento'}, 'f.departamento_id', '=', 'd.id')
+			.where('f.id', '=', id)
 			return res.json(results)
 
 		} catch (error) {

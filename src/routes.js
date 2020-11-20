@@ -2,17 +2,31 @@ const express = require('express')
 const routes = express.Router()
 
 const FuncionarioController = require('./controllers/FuncionarioController')
+const DepartamentoController = require('./controllers/DepartamentoController')
+const VeiculoController = require('./controllers/VeiculoController')
 
-// Listar todos os funcionários
-routes.get('/funcionario', FuncionarioController.index)
-// Retornado dados de um funcionário especifico
-routes.get('/funcionario/:id', FuncionarioController.filter)
-// Adicionar um novo funcionário
-routes.post('/funcionario', FuncionarioController.create)
-// Editar um determinado funcionário
-routes.put('/funcionario/:id', FuncionarioController.update)
-// Deletando um usuário especifico
-routes.delete('/funcionario/:id', FuncionarioController.delete)
+
+routes
+	// FUNCIONÁRIO
+	.get('/funcionario', FuncionarioController.index)
+	.get('/funcionarios/:id', FuncionarioController.filter)
+	.post('/funcionario', FuncionarioController.create)
+	.put('/funcionario/:id', FuncionarioController.update)
+	.delete('/funcionario/:id', FuncionarioController.delete)
+
+	// DEPARTAMENTO
+	.get('/departamento', DepartamentoController.index)
+	.get('/departamento/:id', DepartamentoController.filter)
+	.post('/departamento', DepartamentoController.create)
+	.put('/departamento/:id', DepartamentoController.update)
+	.delete('/departamento/:id', DepartamentoController.delete)
+
+	// VEICULO
+	.get('/veiculo', VeiculoController.index)
+	.get('/veiculo/:id', VeiculoController.filter)
+	.post('/veiculo', VeiculoController.create)
+	.put('/veiculo/:id', VeiculoController.update)
+	.delete('/veiculo/:id', VeiculoController.delete)
 
 
 module.exports = routes
