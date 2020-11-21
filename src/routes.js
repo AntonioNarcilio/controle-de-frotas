@@ -4,6 +4,8 @@ const routes = express.Router()
 const FuncionarioController = require('./controllers/FuncionarioController')
 const DepartamentoController = require('./controllers/DepartamentoController')
 const VeiculoController = require('./controllers/VeiculoController')
+const MultaController = require('./controllers/MultaController')
+
 
 routes
 	// FUNCIONÁRIO
@@ -27,5 +29,12 @@ routes
 	.put('/veiculo/:id', VeiculoController.update)
 	.delete('/veiculo/:id', VeiculoController.delete)
 
+	// MULTA
+	.get('/multa', MultaController.index)
+	.get('/multa/:id', MultaController.filter)
+	.post('/multa', MultaController.create)
+	.put('/multa/:id', MultaController.update)
+	.delete('/multa/:id', MultaController.delete)
+	
 
 module.exports = routes
