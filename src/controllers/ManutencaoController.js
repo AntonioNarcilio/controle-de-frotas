@@ -53,11 +53,11 @@ module.exports = {
 				'pt.nome_peca',
 				'pt.garantia_meses'
 			)
-			.join({pt: 'pecas_trocadas'}, 'pt.manutencao_id', '=', 'm.id')
-			.join({v: 'veiculo'}, 'v.id', '=', 'm.veiculo_id')
-			.join({mt: 'motorista'}, 'mt.id', '=', 'm.motorista_id')
-			.join({f: 'funcionario'}, 'f.id', '=', 'mt.id')
-			.where('v.id', '=', id)
+			.join({pt:'pecas_trocadas'}, 'pt.manutencao_id', '=', 'm.id')
+			.join({v:'veiculo'}, 'v.id', '=', 'm.veiculo_id')
+			.join({mt:'motorista'}, 'mt.id', '=', 'm.motorista_id')
+			.join({f:'funcionario'}, 'f.id', '=', 'mt.id')
+			.where('m.id', '=', id)
 
 			return res.json(results)
 
@@ -136,11 +136,10 @@ module.exports = {
 			.where({ id })
 			.then(rows => 
 				knex('pecas_trocadas')
-				.insert({ 	
+				.update({ 	
 					nome_peca,
-					garantia_meses, 
-					manutencao_id: rows[0] 
-				})
+					garantia_meses
+				}).where({manutencao_id: rows[0]})
 			)
 			
 			return res.send()
@@ -155,11 +154,10 @@ module.exports = {
 		try{
 			const { id } = req.params
 			
-			await knex('veiculo')
+			await knex('manutencao')
 			.where({ id })
 			.del()
 			
-
 			return res.send()
 
 		}catch (error) {
