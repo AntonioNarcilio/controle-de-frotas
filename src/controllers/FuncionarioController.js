@@ -7,6 +7,7 @@ module.exports = {
 			// ------------- nome da tabela 👇
 			const results = await	knex({f:'funcionario'})
 			.select(
+				'f.id',
 				'f.nome', 
 				'f.sobrenome', 
 				'f.cpf',
@@ -38,6 +39,7 @@ module.exports = {
 
 			const results = await	knex({f:'funcionario'})
 			.select(
+				'f.id',
 				'f.nome', 
 				'f.sobrenome', 
 				'f.cpf',

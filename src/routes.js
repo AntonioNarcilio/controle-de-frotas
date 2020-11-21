@@ -4,8 +4,10 @@ const routes = express.Router()
 const FuncionarioController = require('./controllers/FuncionarioController')
 const DepartamentoController = require('./controllers/DepartamentoController')
 const VeiculoController = require('./controllers/VeiculoController')
+const MotoristaController = require('./controllers/MotoristaController')
 const MultaController = require('./controllers/MultaController')
 const ManutencaoController = require('./controllers/ManutencaoController')
+const SolicitacaoController = require('./controllers/SolicitacaoController')
 
 
 routes
@@ -30,6 +32,13 @@ routes
 	.put('/veiculo/:id', VeiculoController.update)
 	.delete('/veiculo/:id', VeiculoController.delete)
 
+	// MOTORISTA
+	.get('/motorista', MotoristaController.index)
+	.get('/motorista/:id', MotoristaController.filter)
+	.post('/motorista', MotoristaController.create)
+	.put('/motorista/:id', MotoristaController.update)
+	.delete('/motorista/:id', MotoristaController.delete)
+
 	// MULTA
 	.get('/multa', MultaController.index)
 	.get('/multa/:id', MultaController.filter)
@@ -44,6 +53,13 @@ routes
 	.post('/manutencao', ManutencaoController.create)
 	.put('/manutencao/:id', ManutencaoController.update)
 	.delete('/manutencao/:id', ManutencaoController.delete)
+
+	// SOLICITACAO
+	.get('/solicitacao', SolicitacaoController.index)
+	.get('/solicitacao/:id', SolicitacaoController.filter)
+	.post('/solicitacao', SolicitacaoController.create)
+	.put('/solicitacao/:id', SolicitacaoController.update)
+	.delete('/solicitacao/:id', SolicitacaoController.delete)
 
 
 module.exports = routes
