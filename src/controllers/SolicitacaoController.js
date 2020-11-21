@@ -8,6 +8,7 @@ module.exports = {
 			const results = await	knex({s:'solicitacao'})
 			.select(
 				's.id',
+				's.status',
 				's.tipo_evento',
 				's.data_e_hora',
 				's.local_endereco',
@@ -39,6 +40,7 @@ module.exports = {
 			const results = await	knex({s:'solicitacao'})
 			.select(
 				's.id',
+				's.status',
 				's.tipo_evento',
 				's.data_e_hora',
 				's.local_endereco',
@@ -67,6 +69,7 @@ module.exports = {
 	async create(req, res, next) {
 		try {
 			const { 
+				status,
 				tipo_evento,
 				data_e_hora,
 				local_endereco,
@@ -81,6 +84,7 @@ module.exports = {
 
 			await knex('solicitacao')
 			.insert({
+				status,
 				tipo_evento,
 				data_e_hora,
 				local_endereco,
@@ -103,6 +107,7 @@ module.exports = {
 	async update(req, res, next) {
 		try {
 			const { 
+				status,
 				tipo_evento,
 				data_e_hora,
 				local_endereco,
@@ -117,6 +122,7 @@ module.exports = {
 
 			await knex('solicitacao')
 			.update({
+				status,
 				tipo_evento,
 				data_e_hora,
 				local_endereco,

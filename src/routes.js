@@ -8,6 +8,7 @@ const MotoristaController = require('./controllers/MotoristaController')
 const MultaController = require('./controllers/MultaController')
 const ManutencaoController = require('./controllers/ManutencaoController')
 const SolicitacaoController = require('./controllers/SolicitacaoController')
+const LocacaoController = require('./controllers/LocacaoController')
 
 
 routes
@@ -60,6 +61,14 @@ routes
 	.post('/solicitacao', SolicitacaoController.create)
 	.put('/solicitacao/:id', SolicitacaoController.update)
 	.delete('/solicitacao/:id', SolicitacaoController.delete)
+
+
+	// LOCACAO VEICULO
+	.get('/locacao', LocacaoController.index)
+	.get('/locacao/:id', LocacaoController.filter)
+	.post('/locacao', LocacaoController.create)
+	.put('/locacao/:id', LocacaoController.update)
+	.delete('/locacao/:id', LocacaoController.delete)
 
 
 module.exports = routes
