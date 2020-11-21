@@ -5,10 +5,22 @@ module.exports = {
 	async index	(req, res, next) {
 		try {
 			// ------------- nome da tabela 👇
-			const results = await	knex()
+			const results = await	knex({le:'locacao_evento'})
 			.select(
-
+				's.id',
+				'le.status_locacao',
+				'le.tanque_saida',
+				'le.tanque_chegada',
+				'le.km_saida',
+				'le.km_chegada',
+				's.tipo_evento',
+				's.data_e_hora',
+				'f.nome',
+				'f.sobrenome',
+				'le.motorista_id'
 			)
+			.join({s:'solicitacao'}, 'le.solicitacao_id', '=', 's.id')
+			.join({f:'funcionario'}, 's.funcionario_id', '=', 'f.id')
 		
 			return res.json(results)
 
@@ -22,12 +34,23 @@ module.exports = {
 		try {
 			const { id } = req.params
 
-			const results = await	knex()
+			const results = await	knex({le:'locacao_evento'})
 			.select(
-
+				's.id',
+				'le.status_locacao',
+				'le.tanque_saida',
+				'le.tanque_chegada',
+				'le.km_saida',
+				'le.km_chegada',
+				's.tipo_evento',
+				's.data_e_hora',
+				'f.nome',
+				'f.sobrenome',
+				'le.motorista_id'
 			)
-
-
+			.join({s:'solicitacao'}, 'le.solicitacao_id', '=', 's.id')
+			.join({f:'funcionario'}, 's.funcionario_id', '=', 'f.id')
+			.where('s.id', '=', id )
 
 			return res.json(results)
 
@@ -46,7 +69,7 @@ module.exports = {
 				km_saida,
 				km_chegada,
 				solicitacao_id,
-				motorista_id,
+				motorista_id
 			} = req.body
 
 			// console.log(req.body)
@@ -59,7 +82,7 @@ module.exports = {
 				km_saida,
 				km_chegada,
 				solicitacao_id,
-				motorista_id,
+				motorista_id
 			})
 
 			return res.status(201).send()
@@ -80,7 +103,7 @@ module.exports = {
 				km_saida,
 				km_chegada,
 				solicitacao_id,
-				motorista_id,
+				motorista_id
 			} = req.body
 
 			const { id } = req.params
@@ -93,9 +116,9 @@ module.exports = {
 				km_saida,
 				km_chegada,
 				solicitacao_id,
-				motorista_id,
+				motorista_id
 			})
-			.where({ id })
+			.where('solicitacao_id', '=', id)
 			
 			return res.send()
 
@@ -110,7 +133,7 @@ module.exports = {
 			const { id } = req.params
 			
 			await knex('locacao_evento')
-			.where({ id })
+			.where('solicitacao_id', '=', id)
 			.del()
 			
 			return res.send()
