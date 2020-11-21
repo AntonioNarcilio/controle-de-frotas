@@ -72,18 +72,23 @@ module.exports = {
 				local_endereco,
 				qtd_pessoas,
 				tempo_de_utilizacao,
+				veiculo_id,
+				funcionario_id,
+				funcionario_departamento_id
 			} = req.body
 
-			console.log(req.body)
+			// console.log(req.body)
 
-			await knex({s:'solicitacao'})
-			.returning('id')
+			await knex('solicitacao')
 			.insert({
 				tipo_evento,
 				data_e_hora,
 				local_endereco,
 				qtd_pessoas,
 				tempo_de_utilizacao,
+				veiculo_id,
+				funcionario_id,
+				funcionario_departamento_id
 			})
 
 			return res.status(201).send()
@@ -98,27 +103,30 @@ module.exports = {
 	async update(req, res, next) {
 		try {
 			const { 
-
-			} = req.body
-
-			const { id } = req.params
-
-			await knex({s:'solicitacao'})
-			.returning('id')
-			.update({ 
 				tipo_evento,
 				data_e_hora,
 				local_endereco,
 				qtd_pessoas,
 				tempo_de_utilizacao,
-			})
-			.where('v.id', '=', id)
-			.then(rows => 
-				knex('tipo_veiculo')
-				.update({ 	
+				veiculo_id,
+				funcionario_id,
+				funcionario_departamento_id
+			} = req.body
 
-				}).where({veiculo_id: rows[0] })
-			)
+			const { id } = req.params
+
+			await knex('solicitacao')
+			.update({
+				tipo_evento,
+				data_e_hora,
+				local_endereco,
+				qtd_pessoas,
+				tempo_de_utilizacao,
+				veiculo_id,
+				funcionario_id,
+				funcionario_departamento_id
+			})
+			.where({ id })
 			
 			return res.send()
 
@@ -132,7 +140,7 @@ module.exports = {
 		try{
 			const { id } = req.params
 			
-			await knex({s:'solicitacao'})
+			await knex('solicitacao')
 			.where({ id })
 			.del()
 			
