@@ -80,7 +80,6 @@ module.exports = {
 				motorista_id
 			})
 
-
 			return res.status(201).send()
 
 		} catch (error) {
@@ -128,7 +127,6 @@ module.exports = {
 			.where({ id })
 			.del()
 			
-
 			return res.send()
 
 		}catch (error) {
