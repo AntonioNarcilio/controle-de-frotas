@@ -5,6 +5,7 @@ const FuncionarioController = require('./controllers/FuncionarioController')
 const DepartamentoController = require('./controllers/DepartamentoController')
 const VeiculoController = require('./controllers/VeiculoController')
 const MultaController = require('./controllers/MultaController')
+const ManutencaoController = require('./controllers/ManutencaoController')
 
 
 routes
@@ -35,6 +36,14 @@ routes
 	.post('/multa', MultaController.create)
 	.put('/multa/:id', MultaController.update)
 	.delete('/multa/:id', MultaController.delete)
-	
+
+
+	// MANUTENCAO
+	.get('/manutencao', ManutencaoController.index)
+	.get('/manutencao/:id', ManutencaoController.filter)
+	.post('/manutencao', ManutencaoController.create)
+	.put('/manutencao/:id', ManutencaoController.update)
+	.delete('/manutencao/:id', ManutencaoController.delete)
+
 
 module.exports = routes

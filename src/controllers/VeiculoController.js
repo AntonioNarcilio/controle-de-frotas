@@ -25,7 +25,6 @@ module.exports = {
 			)
 			.join({t: 'tipo_veiculo'}, 'v.id', '=', 't.veiculo_id')
 		
-
 			return res.json(results)
 
 		}catch (error) {
@@ -113,8 +112,6 @@ module.exports = {
 				})
 			)
 
-
-
 			return res.status(201).send()
 
 		} catch (error) {
@@ -127,25 +124,26 @@ module.exports = {
 	async update(req, res, next) {
 		try {
 			const { 
-				marca,
-				modelo,
-				ano_fabricacao,
-				num_chassi,
-				num_placa,
-				tipo_combustivel,
-				tanque_tamanho,
-				tanque_atual,
-				quilometragem,
-				categoria,
-				portas,
-				tipo_farol,
-				cambio,
-				ocupantes,
+	     marca,
+       modelo,
+       ano_fabricacao,
+       categoria,
+       portas,
+       tipo_farol,
+       cambio,
+       ocupantes,
+       num_chassi,
+       num_placa,
+       tipo_combustivel,
+       tanque_tamanho,
+       tanque_atual,
+       quilometragem,
 			} = req.body
 
 			const { id } = req.params
 
-			await knex('veiculo')
+			await knex({v:'veiculo'})
+			.returning('id')
 			.update({ 
 				marca,
 				modelo,
@@ -157,7 +155,7 @@ module.exports = {
 				tanque_atual,
 				quilometragem
 			})
-			.where({ id })
+			.where('v.id', '=', id)
 			.then(rows => 
 				knex('tipo_veiculo')
 				.update({ 	
@@ -165,12 +163,10 @@ module.exports = {
 					portas,
 					tipo_farol,
 					cambio,
-					ocupantes, 
-					veiculo_id: rows[0] 
-				})
+					ocupantes
+				}).where({veiculo_id: rows[0] })
 			)
 			
-
 			return res.send()
 
 		} catch (error) {
@@ -185,11 +181,8 @@ module.exports = {
 			
 			await knex('veiculo')
 			.where({ id })
-			await knex('tipo_veiculo')
-			.where('veiculo_id', '=', id )
 			.del()
 			
-
 			return res.send()
 
 		}catch (error) {
