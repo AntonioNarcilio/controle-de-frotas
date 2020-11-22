@@ -5,7 +5,7 @@ module.exports = {
   development: {
     client: 'pg',
     connection: {
-      host: '35.198.31.77',
+      host: '35.198.34.83',
       port: '5432',
       database: 'controle_de_frotas',
       user: 'postgres',

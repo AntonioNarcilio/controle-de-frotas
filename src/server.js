@@ -1,12 +1,14 @@
 const express = require('express')
 const app = express()
-
+const cors = require('cors')
 const routes = require('./routes')
 
 // Config porta da aplicação
 const PORT = process.env.PORT || 3333
 // A ser utilizado caso crie uma image no docker
 // const HOST = '0.0.0.0' 
+
+app.use(cors())
 
 app.use(express.json())
 app.use(routes)

@@ -58,6 +58,38 @@ module.exports = {
 		}
 	},
 
+	// Pesquisando Funcionário Por Nome
+	async search(req, res, next) {
+		try {
+			const { nome } = req.query
+
+			const query = knex({f:'funcionario'})
+
+			if (nome)  {
+				query
+				.select(
+					'f.id',
+					'f.nome', 
+					'f.sobrenome', 
+					'f.cpf',
+					'f.data_nasc',
+					'f.sexo',
+					'f.endereco',
+					'd.dnome', 
+					)
+				.join({d: 'departamento'}, 'f.departamento_id', '=', 'd.id')
+				.where('f.nome', 'ilike', nome)
+			}
+
+			const results = await query
+			
+			return res.json(results)
+
+		} catch (error) {
+				next(error)
+		}
+	},
+
 	// Criar/adicionar novo funcionário
 	async create(req, res, next) {
 		try {

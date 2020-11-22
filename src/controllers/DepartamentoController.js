@@ -29,6 +29,32 @@ module.exports = {
 		}
 	},
 
+
+	// Pesquisando pelo nome do departamento
+	async search(req, res, next) {
+		try {
+			const { nome } = req.query
+
+			const query = knex({d:'departamento'})
+
+			if (nome)  {
+				query
+				.select(
+						'*'
+					)
+				.where('d.dnome', 'ilike', nome)
+			}
+
+			const results = await query
+			
+			return res.json(results)
+
+		} catch (error) {
+				next(error)
+		}
+	},
+
+
 	// Criar/adicionar novo departamento
 	async create(req, res, next) {
 		try {
