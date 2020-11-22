@@ -39,6 +39,7 @@ routes
 	// MOTORISTA
 	.get('/motoristas', MotoristaController.index)
 	.get('/motorista/:id', MotoristaController.filter)
+	.get('/motorista', MotoristaController.search)
 	.post('/motorista', MotoristaController.create)
 	.put('/motorista/:id', MotoristaController.update)
 	.delete('/motorista/:id', MotoristaController.delete)

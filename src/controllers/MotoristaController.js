@@ -54,6 +54,57 @@ module.exports = {
 		}
 	},
 
+
+	// Pesquisando Funcionário Por Nome
+	async search(req, res, next) {
+		try {
+			const { cnh, tipo_cnh } = req.query
+
+			const query = knex({m:'motorista'})
+
+			// Pelo numero da cnh
+			if (cnh)  {
+				query
+				.select(
+					'm.id',
+					'm.cnh',
+					'm.tipo_cnh',
+					'm.data_venc_cnh',
+					'f.nome',
+					'f.sobrenome',
+					'd.dnome'
+					)
+				.join({f:'funcionario'}, 'm.funcionario_id', '=', 'f.id')
+				.join({d:'departamento'}, 'm.funcionario_departamento_id', '=', 'd.id')	
+				.where('m.cnh', 'ilike', cnh)
+			}
+
+			// Tipo
+			if (tipo_cnh)  {
+				query
+				.select(
+					'm.id',
+					'm.cnh',
+					'm.tipo_cnh',
+					'm.data_venc_cnh',
+					'f.nome',
+					'f.sobrenome',
+					'd.dnome'
+					)
+				.join({f:'funcionario'}, 'm.funcionario_id', '=', 'f.id')
+				.join({d:'departamento'}, 'm.funcionario_departamento_id', '=', 'd.id')	
+				.where('m.tipo_cnh', '=', tipo_cnh)
+			}
+
+			const results = await query
+			
+			return res.json(results)
+
+		} catch (error) {
+				next(error)
+		}
+	},
+
 	// Criar/adicionar novo funcionário
 	async create(req, res, next) {
 		try {

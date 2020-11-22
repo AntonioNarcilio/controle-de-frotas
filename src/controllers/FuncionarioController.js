@@ -58,7 +58,7 @@ module.exports = {
 		}
 	},
 
-	// Pesquisando Funcionário Por Nome
+	// Pesquisando funcionário por nome
 	async search(req, res, next) {
 		try {
 			const { nome } = req.query
