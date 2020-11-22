@@ -31,6 +31,7 @@ routes
 	// VEICULO
 	.get('/veiculos', VeiculoController.index)
 	.get('/veiculo/:id', VeiculoController.filter)
+	.get('/veiculo', VeiculoController.search)
 	.post('/veiculo', VeiculoController.create)
 	.put('/veiculo/:id', VeiculoController.update)
 	.delete('/veiculo/:id', VeiculoController.delete)

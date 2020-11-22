@@ -65,6 +65,72 @@ module.exports = {
 		}
 	},
 
+
+	// Pesquisando veiculo por nome/modelo ou pelo num placa
+	async search(req, res, next) {
+		try {
+			const { nome, placa } = req.query
+
+			const query = knex({v:'veiculo'})
+
+			// Consulta pelo modelo
+			if (nome)  {
+				query
+				.select(
+					'v.id',
+					'v.marca',
+					'v.modelo',
+					'v.ano_fabricacao',
+					't.categoria',
+					't.portas',
+					't.tipo_farol',
+					't.cambio',
+					't.ocupantes',
+					'v.num_chassi',
+					'v.num_placa',
+					'v.tipo_combustivel',
+					'v.tanque_tamanho',
+					'v.tanque_atual',
+					'v.quilometragem'
+				)
+				.join({t: 'tipo_veiculo'}, 'v.id', '=', 't.veiculo_id')
+				.where('v.modelo', 'ilike', nome)
+			}
+
+			// Consulta pelo numero da placa
+			if (placa)  {
+				query
+				.select(
+					'v.id',
+					'v.marca',
+					'v.modelo',
+					'v.ano_fabricacao',
+					't.categoria',
+					't.portas',
+					't.tipo_farol',
+					't.cambio',
+					't.ocupantes',
+					'v.num_chassi',
+					'v.num_placa',
+					'v.tipo_combustivel',
+					'v.tanque_tamanho',
+					'v.tanque_atual',
+					'v.quilometragem'
+				)
+				.join({t: 'tipo_veiculo'}, 'v.id', '=', 't.veiculo_id')
+				.where('v.num_placa', 'ilike', placa)
+			}
+
+			const results = await query
+			
+			return res.json(results)
+
+		} catch (error) {
+				next(error)
+		}
+	},
+
+
 	// Criar/adicionar novo veiculo
 	async create(req, res, next) {
 		try {
