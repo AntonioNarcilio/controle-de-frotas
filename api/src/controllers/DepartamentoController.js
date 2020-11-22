@@ -5,7 +5,18 @@ module.exports = {
 	async index	(req, res, next) {
 		try {
 			// ------------- nome da tabela 👇
-			const results = await	knex('departamento')
+			const results = await	knex({d:'departamento'})
+			.select(
+				"d.id",
+				"d.dnome",
+				"f.nome",
+				"f.sobrenome",
+				"d.cpf_gerente",
+				"d.data_ini_gerente",
+			)
+			.join({f: 'funcionario'}, 'd.cpf_gerente', '=', 'f.cpf')
+			.orderBy('d.dnome', 'asc')
+
 			return res.json(results)
 			
 		} catch (error) {
@@ -19,8 +30,17 @@ module.exports = {
 		try {
 			const { id } = req.params
 
-			const results = await	knex('departamento')
-			.where({ id })
+			const results = await	knex({d:'departamento'})
+			.select(
+				"d.id",
+				"d.dnome",
+				"f.nome",
+				"f.sobrenome",
+				"d.cpf_gerente",
+				"d.data_ini_gerente",
+			)
+			.join({f:'funcionario'}, 'd.cpf_gerente', '=', 'f.cpf')
+			.where('d.id', '=', id)
 
 			return res.json(results)
 
@@ -40,8 +60,14 @@ module.exports = {
 			if (nome)  {
 				query
 				.select(
-						'*'
-					)
+					"d.id",
+					"d.dnome",
+					"f.nome",
+					"f.sobrenome",
+					"d.cpf_gerente",
+					"d.data_ini_gerente",
+				)
+				.join({f:'funcionario'}, 'd.cpf_gerente', '=', 'f.cpf')
 				.where('d.dnome', 'ilike', nome)
 			}
 

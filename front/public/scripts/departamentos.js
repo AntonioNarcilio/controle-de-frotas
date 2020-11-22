@@ -1,9 +1,10 @@
-// const uri  = 'http://localhost:3333/departamento'
+const uri  = 'http://localhost:3333/departamentos'
+
 
 const meses = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul","Ago","Set","Out","Nov","Dez"];
 
 
-function getFuncionario () {
+function getDepartamentos () {
 
 	axios
 	.get(`${uri}`)
@@ -18,7 +19,7 @@ function getFuncionario () {
 
 }
 
-getFuncionario()
+getDepartamentos()
 
 function adicionaZero(numero){
 	if (numero <= 9) 
@@ -29,25 +30,21 @@ function adicionaZero(numero){
 
 
 
-function View(funcionarios) {
+function View(departamentos) {
 	let output = ''
 
-	for (let funcionario of funcionarios) {
+	for (let departamento of departamentos) {
 
 		// Editando data
-		let data = new Date(`${funcionario.data_nasc}`); 
+		let data = new Date(`${departamento.data_ini_gerente}`); 
 		let dataFormatada = (adicionaZero(data.getDate().toString()) + " " + meses[(data.getMonth())] + " " + data.getFullYear()) ;
 		// console.log(dataFormatada);
 
 		output += `
 		<tr>
-		<td>${funcionario.nome}</td>
-		<td>${funcionario.sobrenome}</td>
-		<td>${funcionario.cpf}</td>
+		<td>${departamento.dnome}</td>
+		<td>${departamento.cpf_gerente}</td>
 		<td>${dataFormatada}</td>
-		<td>${funcionario.sexo}</td>
-		<td>${funcionario.endereco}</td>
-		<td>${funcionario.dnome}</td>
 		</tr>
 		`
 	}
