@@ -20,13 +20,13 @@ function getFuncionario () {
 
 getFuncionario()
 
+
 function adicionaZero(numero){
 	if (numero <= 9) 
 			return "0" + numero;
 	else
 			return numero; 
 }
-
 
 
 function View(funcionarios) {
@@ -41,13 +41,13 @@ function View(funcionarios) {
 
 		output += `
 		<tr>
-		<td>${funcionario.nome}</td>
-		<td>${funcionario.sobrenome}</td>
-		<td>${funcionario.cpf}</td>
-		<td>${dataFormatada}</td>
-		<td>${funcionario.sexo}</td>
-		<td>${funcionario.endereco}</td>
-		<td>${funcionario.dnome}</td>
+			<td>${funcionario.nome}</td>
+			<td>${funcionario.sobrenome}</td>
+			<td>${funcionario.cpf}</td>
+			<td>${dataFormatada}</td>
+			<td>${funcionario.sexo}</td>
+			<td>${funcionario.endereco}</td>
+			<td>${funcionario.dnome}</td>
 		</tr>
 		`
 	}

@@ -21,13 +21,13 @@ function getDepartamentos () {
 
 getDepartamentos()
 
+
 function adicionaZero(numero){
 	if (numero <= 9) 
 			return "0" + numero;
 	else
 			return numero; 
 }
-
 
 
 function View(departamentos) {
@@ -42,11 +42,11 @@ function View(departamentos) {
 
 		output += `
 		<tr>
-		<td>${departamento.dnome}</td>
-		<td>${departamento.nome}</td>
-		<td>${departamento.sobrenome}</td>
-		<td>${departamento.cpf_gerente}</td>
-		<td>${dataFormatada}</td>
+			<td>${departamento.dnome}</td>
+			<td>${departamento.nome}</td>
+			<td>${departamento.sobrenome}</td>
+			<td>${departamento.cpf_gerente}</td>
+			<td>${dataFormatada}</td>
 		</tr>
 		`
 	}
