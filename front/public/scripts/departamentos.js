@@ -43,6 +43,8 @@ function View(departamentos) {
 		output += `
 		<tr>
 		<td>${departamento.dnome}</td>
+		<td>${departamento.nome}</td>
+		<td>${departamento.sobrenome}</td>
 		<td>${departamento.cpf_gerente}</td>
 		<td>${dataFormatada}</td>
 		</tr>
