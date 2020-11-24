@@ -1,5 +1,10 @@
-## Trabalho relacionado a Banco de dados & Lab. de Banco de Dados
+## Trabalho realizado relacionado as cadeiras de:
 
+<h5 align="center">
+
+`Banco de dados`, `Lab. de Banco de Dados` & `Temas Tecnológicos em Infraestrutura Tecnologica`
+
+</h5>
 
 <h4 id="topo" align="center"> 
 	<a href="#1">
@@ -16,15 +21,6 @@
 </h4>
 
 <br/>
-
-
-<a href="#topo">
-
-### **Diagrama de Entidade Relacional**
-
-</a>
-
-![](./.github/diagrama.png)
 
 <a href="#topo">
   <h2 id="1">
@@ -73,6 +69,15 @@ Para cada multa, deve ser informado o local, a data e hora, o tipo da multa e o 
 ---
 
 
+<a href="#topo">
+
+### **Diagrama de Entidade Relacional**
+
+</a>
+
+![](./.github/diagrama.png)
+
+---
 
 #### **SQL**
 
