@@ -1,0 +1,11 @@
+[Dolphin]
+GroupedSorting=true
+PreviewsShown=false
+SortRole=type
+Timestamp=2020,11,23,21,39,39
+Version=4
+ViewMode=1
+VisibleRoles=Details_text,Details_size,Details_modificationtime,Details_type,Details_tags,CustomizedDetails
+
+[Settings]
+HiddenFilesShown=true
