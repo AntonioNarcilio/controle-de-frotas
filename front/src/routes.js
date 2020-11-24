@@ -3,7 +3,8 @@ const router = express.Router()
 
 router.get('/', (req, res) => {
 	return res.render('home/index.html',
-	{title: 'Home'})
+	{title: 'Home'}
+	)	
 })
 
 router.get('/funcionarios', (req, res) => {
