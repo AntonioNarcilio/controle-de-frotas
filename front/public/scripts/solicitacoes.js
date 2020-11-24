@@ -3,7 +3,7 @@ const uri  = 'http://localhost:3333/solicitacoes'
 const meses = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul","Ago","Set","Out","Nov","Dez"];
 
 
-function getMultas () {
+function getSolicitacoes () {
 
 	axios
 	.get(`${uri}`)
@@ -18,7 +18,7 @@ function getMultas () {
 
 }
 
-getMultas()
+getSolicitacoes()
 
 
 function adicionaZero(numero){
@@ -29,14 +29,14 @@ function adicionaZero(numero){
 }
 
 
-function View(multas) {
+function View(solicitacoes) {
 	let output = ''
 	let numero_de_itens = 1
 
-	for (let multa of multas) {
+	for (let solicitacao of solicitacoes) {
 
 		// Editando data
-		let data = new Date(`${multa.data_e_hora}`); 
+		let data = new Date(`${solicitacao.data_e_hora}`); 
 		let datahoraFormatada = (
 			adicionaZero(data.getDate().toString()) + " "
 			 + meses[(data.getMonth())] + " " 
@@ -44,18 +44,22 @@ function View(multas) {
 			 + adicionaZero(data.getUTCHours()) + ":" + adicionaZero(data.getUTCMinutes())
 			 );
 		// console.log(datahoraFormatada);
-		
+
+
 		output += `
 		<tr>
 			<td><b>${adicionaZero(numero_de_itens)}</b></td>
-			<td>${multa.local_endereco}</td>
+			<td>${solicitacao.status}</td>
+			<td>${solicitacao.tipo_evento}</td>
 			<td>${datahoraFormatada}</td>
-			<td>${multa.tipo}</td>
-			<td>${multa.modelo}</td>
-			<td>${multa.num_placa}</td>
-			<td>${multa.num_chassi}</td>
-			<td>${multa.nome + ' ' + multa.sobrenome}</td>
-			<td>${multa.cnh}</td>
+			<td>${solicitacao.local_endereco}</td>
+			<td>${solicitacao.qtd_pessoas}</td>
+			<td>${solicitacao.tempo_de_utilizacao}</td>
+			<td>${solicitacao.modelo}</td>
+			<td>${solicitacao.num_placa}</td>
+			<td>${solicitacao.nome + ' ' + solicitacao.sobrenome}</td>
+			<td>${solicitacao.cpf}</td>
+			<td>${solicitacao.dnome}</td>
 		</tr>
 		`
 		numero_de_itens +=1
