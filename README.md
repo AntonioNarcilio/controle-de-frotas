@@ -24,7 +24,7 @@
 
 </a>
 
-![]('./.github/diagrama.png')
+![](./.github/diagrama.png)
 
 <a href="#topo">
   <h2 id="1">
