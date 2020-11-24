@@ -42,7 +42,7 @@ function View(funcionarios) {
 
 		output += `
 		<tr>
-			<td>${adicionaZero(numero_de_itens)}</td>
+			<td><b>${adicionaZero(numero_de_itens)}</b></td>
 			<td>${funcionario.nome + ' ' + funcionario.sobrenome}</td>
 			<td>${funcionario.cpf}</td>
 			<td>${dataFormatada}</td>

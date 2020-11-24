@@ -43,7 +43,7 @@ function View(departamentos) {
 
 		output += `
 		<tr>
-			<td>${adicionaZero(numero_de_itens)}</td>
+			<td><b>${adicionaZero(numero_de_itens)}</b></td>
 			<td>${departamento.dnome}</td>
 			<td>${departamento.nome + ' ' + departamento.sobrenome}</td>
 			<td>${departamento.cpf_gerente}</td>

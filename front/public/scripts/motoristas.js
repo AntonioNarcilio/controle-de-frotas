@@ -42,7 +42,7 @@ function View(motoristas) {
 
 		output += `
 		<tr>
-			<td>${adicionaZero(numero_de_itens)}</td>
+			<td><b>${adicionaZero(numero_de_itens)}</b></td>
 			<td>${motorista.cnh}</td>
 			<td>${motorista.tipo_cnh}</td>
 			<td>${dataFormatada}</td>

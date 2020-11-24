@@ -34,7 +34,7 @@ function View(manutencoes) {
 
 		output += `
 		<tr>
-			<td><b>${adicionaZero(numero_de_itens)}</td>
+			<td><b>${adicionaZero(numero_de_itens)}</b></td>
 			<td>${manutencao.tipo}</td>
 			<td>${manutencao.quilometragem}</td>
 			<td>${manutencao.causa}</td>
