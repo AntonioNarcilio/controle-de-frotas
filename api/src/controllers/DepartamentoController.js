@@ -68,7 +68,7 @@ module.exports = {
 					"d.data_ini_gerente",
 				)
 				.join({f:'funcionario'}, 'd.cpf_gerente', '=', 'f.cpf')
-				.where('d.dnome', 'ilike', nome)
+				.where('d.dnome', 'ilike', `%${nome}%`)
 			}
 
 			const results = await query

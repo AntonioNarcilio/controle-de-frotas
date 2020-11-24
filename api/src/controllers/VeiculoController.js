@@ -94,7 +94,7 @@ module.exports = {
 					'v.quilometragem'
 				)
 				.join({t: 'tipo_veiculo'}, 'v.id', '=', 't.veiculo_id')
-				.where('v.modelo', 'ilike', nome)
+				.where('v.modelo', 'ilike', `%${nome}%`)
 			}
 
 			// Consulta pelo numero da placa
