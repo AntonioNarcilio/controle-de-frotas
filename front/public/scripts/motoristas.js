@@ -31,6 +31,7 @@ function adicionaZero(numero){
 
 function View(motoristas) {
 	let output = ''
+	let numero_de_itens = 1
 
 	for (let motorista of motoristas) {
 
@@ -41,14 +42,15 @@ function View(motoristas) {
 
 		output += `
 		<tr>
+			<td>${adicionaZero(numero_de_itens)}</td>
 			<td>${motorista.cnh}</td>
 			<td>${motorista.tipo_cnh}</td>
 			<td>${dataFormatada}</td>
-			<td>${motorista.nome}</td>
-			<td>${motorista.sobrenome}</td>
+			<td>${motorista.nome + ' ' + motorista.sobrenome}</td>
 			<td>${motorista.dnome}</td>
 		</tr>
 		`
+		numero_de_itens +=1
 	}
 
 

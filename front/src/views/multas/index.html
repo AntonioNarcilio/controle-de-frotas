@@ -3,7 +3,7 @@
 
 <!-- Title -->
 {% block title %}
-	<title>Veículos</title>
+	<title>Multas</title>
 {% endblock title %}
 
 <!-- body --> 
@@ -20,11 +20,15 @@
 				<table class="highlight">
 					<thead>
 						<tr>
-							<th>Nome</th>
-							<th>Nome do gerente</th>
-							<th>Sobrenome do gerente</th>
-							<th>CPF do gerente</th>
-							<th>Data de entrada</th>
+							<th>Nº</th>
+							<th>Local da multa</th>
+							<th>Data e hora</th>
+							<th>Tipo</th>
+							<th>Veiculo</th>
+							<th>N° placa</th>
+							<th>N° chassi</th>
+							<th>Nome do motorista</th>
+							<th>CNH</th>
 						</tr>
 					</thead>
 
@@ -43,6 +47,6 @@
 
 <!-- scripts -->
 {% block scripts %}
-	<script src="/scripts/veiculos.js"></script>
+	<script src="/scripts/multas.js"></script>
 {% endblock scripts %}
 

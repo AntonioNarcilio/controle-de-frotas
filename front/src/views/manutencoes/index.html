@@ -6,6 +6,11 @@
 	<title>Manutenções</title>
 {% endblock title %}
 
+<!-- stylesheet -->
+{% block styles %}
+	<link rel="stylesheet" href="styles/manutencoes.css">
+{% endblock styles %}
+
 <!-- body --> 
 {% block content %}
 
@@ -20,17 +25,17 @@
 				<table class="highlight">
 					<thead>
 						<tr>
+							<th>Nº</th>
 							<th>Tipo</th>
-							<th>Km</th>
+							<th id="km">Km veiculo</th>
 							<th>Causa</th>
 							<th>Observação</th>
-							<th>Nome motorista</th>
-							<th>sobrenome motorista</th>
+							<th id='motorista'>Nome do motorista</th>
 							<th>CNH</th>
-							<th>Modelo veiculo</th>
-							<th>Nº da placa</th>
-							<th>Peça trocada</th>
-							<th>Garantia (meses)</th>
+							<th id="m-veiculo">Modelo veiculo</th>
+							<th id="placa">Nº da placa</th>
+							<th id="pecas">Peça trocada</th>
+							<th id="garantia">Garantia (meses)</th>
 						</tr>
 					</thead>
 

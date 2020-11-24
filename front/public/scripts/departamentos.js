@@ -32,6 +32,7 @@ function adicionaZero(numero){
 
 function View(departamentos) {
 	let output = ''
+	let numero_de_itens = 1
 
 	for (let departamento of departamentos) {
 
@@ -42,13 +43,15 @@ function View(departamentos) {
 
 		output += `
 		<tr>
+			<td>${adicionaZero(numero_de_itens)}</td>
 			<td>${departamento.dnome}</td>
-			<td>${departamento.nome}</td>
-			<td>${departamento.sobrenome}</td>
+			<td>${departamento.nome + ' ' + departamento.sobrenome}</td>
 			<td>${departamento.cpf_gerente}</td>
 			<td>${dataFormatada}</td>
 		</tr>
 		`
+
+		numero_de_itens +=1
 	}
 
 

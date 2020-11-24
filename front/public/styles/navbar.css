@@ -1,3 +1,19 @@
+/* NAVBAR */
+nav.nav-extended .nav-content {
+	position: relative;
+	line-height: normal;
+	height: 41px;
+}
+
+nav .nav-title {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 25px;
+	padding: 0;
+}
+
+
 nav .brand-logo {
 	position: absolute;
 	color: #fff;
@@ -5,7 +21,6 @@ nav .brand-logo {
 	font-size: 1.5rem;
 	padding: 0;
 }
-
 
 @media only screen and (min-width: 993px){
 	.container {
