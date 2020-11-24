@@ -151,7 +151,7 @@ module.exports = {
 				ocupantes,
 			} = req.body
 
-			console.log(req.body)
+			// console.log(req.body)
 
 			await knex('veiculo')
 			.returning('id')
