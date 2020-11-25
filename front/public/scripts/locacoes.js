@@ -45,9 +45,8 @@ function View(locacoes) {
 			 );
 		// console.log(datahoraFormatada);
 
-
-
 		output += `
+
 		<tr>
 			<td><b>${adicionaZero(numero_de_itens)}</b></td>
 			<td>${locacao.status_locacao}</td>
@@ -68,3 +67,4 @@ function View(locacoes) {
 	document.querySelector('tbody').innerHTML = output
 
 }
+
