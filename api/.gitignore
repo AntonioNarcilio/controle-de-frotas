@@ -3,3 +3,4 @@ migrations
 seeds
 comandos_usados.md
 .env
+.directory

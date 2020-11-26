@@ -20,5 +20,5 @@ nunjucks.configure("src/views/", {
 
 
 app.listen(PORT, () =>{
-	console.log(`App rodando na porta ${PORT}`)
+	console.log(`Aplicação rodando na porta ${PORT}\n👉 http://${HOST}:${PORT}`)
 })
