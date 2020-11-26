@@ -62,7 +62,7 @@ disso, é necessário registrar todas as peças trocadas e o tempo de garantiade
 - [x] Também é necessário armazenar possíveis multas vinculadas a cada carro.
 Para cada multa, deve ser informado o local, a data e hora, o tipo da multa e o motorista que estava utilizando o carro, caso tenha sido identificado.
 
-- [ ] O departamento precisa ter um estoque de combustível, que deve armazenar a  quantidade de combustível utilizado por cada carro, em cada evento.
+- [x] O departamento precisa ter um estoque de combustível, que deve armazenar a  quantidade de combustível utilizado por cada carro, em cada evento.
 
 
 <br/>
