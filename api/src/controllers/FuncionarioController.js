@@ -21,7 +21,7 @@ module.exports = {
 			.orderBy('f.nome', 'asc')
 
 			const [ count ] = await knex('funcionario').count()
-			console.log(`\nExiste ${count.count} funcionários cadastrados\n`)
+			console.log(`\nExiste ${count.count} funcionário(s) cadastrado(s\n`)
 
 			return res.json(results)
 

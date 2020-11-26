@@ -17,6 +17,9 @@ module.exports = {
 			.join({f: 'funcionario'}, 'd.cpf_gerente', '=', 'f.cpf')
 			.orderBy('d.dnome', 'asc')
 
+			const [ count ] = await knex('departamento').count()
+			console.log(`\nExiste ${count.count} departamento(s) cadastrado(s)\n`)
+
 			return res.json(results)
 			
 		} catch (error) {

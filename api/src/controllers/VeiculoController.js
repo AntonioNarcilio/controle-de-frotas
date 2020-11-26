@@ -24,6 +24,9 @@ module.exports = {
 				'v.quilometragem'
 			)
 			.join({t: 'tipo_veiculo'}, 'v.id', '=', 't.veiculo_id')
+
+			const [ count ] = await knex('veiculo').count()
+			console.log(`\nExiste ${count.count} veiculo(s) cadastrado(s)\n`)
 		
 			return res.json(results)
 

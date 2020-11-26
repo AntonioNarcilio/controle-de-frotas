@@ -26,6 +26,9 @@ module.exports = {
 			.join({f: 'funcionario'}, 'f.id', '=', 'mt.id')
 			.orderBy('m.id', 'asc')
 
+			const [ count ] = await knex('manutencao').count()
+			console.log(`\nExiste ${count.count} manutenção(ões) cadastrada(s)\n`)
+
 			return res.json(results)
 
 		}catch (error) {

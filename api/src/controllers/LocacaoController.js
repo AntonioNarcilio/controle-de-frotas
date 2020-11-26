@@ -21,6 +21,9 @@ module.exports = {
 			)
 			.join({s:'solicitacao'}, 'le.solicitacao_id', '=', 's.id')
 			.join({f:'funcionario'}, 's.funcionario_id', '=', 'f.id')
+
+			const [ count ] = await knex('locacao_evento').count()
+			console.log(`\nExiste ${count.count} locação(ões) cadastrada(s)\n`)
 		
 			return res.json(results)
 

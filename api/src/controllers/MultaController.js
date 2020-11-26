@@ -22,6 +22,9 @@ module.exports = {
 			.join({mt: 'motorista'}, 'm.motorista_id', '=', 'mt.id')
 			.join({f: 'funcionario'}, 'mt.funcionario_id', '=', 'f.id')
 			.orderBy('m.id', 'asc')
+
+			const [ count ] = await knex('multa').count()
+			console.log(`\nExiste ${count.count} multa(s) cadastrada(s)\n`)
 		
 			return res.json(results)
 
