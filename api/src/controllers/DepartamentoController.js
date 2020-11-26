@@ -88,14 +88,14 @@ module.exports = {
 	async create(req, res, next) {
 		try {
 			const { 
-				nome,
+				dnome,
 				cpf_gerente,
 				data_ini_gerente
 			} = req.body
 
 
 			await knex('departamento').insert({
-				nome,
+				dnome,
 				cpf_gerente,
 				data_ini_gerente
 			})
@@ -112,7 +112,7 @@ module.exports = {
 	async update(req, res, next) {
 		try {
 			const { 
-				nome,
+				dnome,
 				cpf_gerente,
 				data_ini_gerente
 			} = req.body
@@ -121,7 +121,7 @@ module.exports = {
 
 			await knex('departamento')
 			.update({ 
-				nome,
+				dnome,
 				cpf_gerente,
 				data_ini_gerente
 			})
